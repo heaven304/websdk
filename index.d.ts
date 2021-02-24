@@ -35,7 +35,18 @@ declare let initArgs: {
     error?: Function,
 };
 
-type MeetingInfoType = 'topic'|'host'|'mn'|'pwd'|'telPwd'|'invite'|'participant'|'dc'|'enctype'|'report';
+declare enum MeetingInfoType {
+    'topic',
+    'host',
+    'mn',
+    'pwd',
+    'telPwd',
+    'invite',
+    'participant',
+    'dc',
+    'enctype',
+    'report'
+}
 
 declare enum WebSDKInMeetingEvent {
     onUserJoin, // only support meeting
@@ -55,11 +66,11 @@ export declare namespace ZoomMtgLang {
     /**
     * load you language resource
     * 'de-DE', 'es-ES', 'en-US', 'fr-FR', 'jp-JP', 'pt-PT', 'ru-RU', 'zh-CN', 'zh-TW', 'ko-KO', 'vi-VN', 'it-IT'
-    * @param url you language resource json link
+    * @param url you language resource object or json link
     * @param lang you assign lang name
     *
     */
-    function load(url: string, lang: string): void;
+    function reload(url: string | object , lang: string): void;
     /**
     * change you UI language
     * 'de-DE', 'es-ES', 'en-US', 'fr-FR', 'jp-JP', 'pt-PT', 'ru-RU', 'zh-CN', 'zh-TW', 'ko-KO', 'vi-VN', 'it-IT' or you loaded lang
@@ -91,11 +102,6 @@ export declare namespace ZoomMtgLang {
     *
     */
     function getSupportLanguage(): Array<string>;
-    /**
-     * change to youself support languages
-     * @param langArray  you want support languages array, will replace default ['de-DE', 'es-ES', 'en-US', 'fr-FR', 'jp-JP', 'pt-PT', 'ru-RU', 'zh-CN', 'zh-TW', 'ko-KO', 'vi-VN', 'it-IT'] 
-     */
-    function setSupportLanguage(langArray): Array<string>;
 }
 export namespace ZoomMtg {
     const i18n: typeof ZoomMtgLang;
